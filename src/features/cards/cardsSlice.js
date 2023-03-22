@@ -1,4 +1,4 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const cardsSlice = createSlice(
     {
@@ -8,7 +8,13 @@ const cardsSlice = createSlice(
         },
         reducers: {
             addCard: (state, action) => {
-                /* { id: '123', front: 'front of card', back: 'back of card'}. */
+
+                const { id, front, back } = action.payload;
+                state.cards[id] = {
+                    id: id,
+                    front: front,
+                    back: back
+                }
             }
         }
     }
