@@ -6,7 +6,6 @@ export const thunkActionCreator = (payload) => {
     return (dispatch) => {
         // dispatch multiple actions here
         dispatch(quizzesSlice.actions.addQuiz(payload));
-    
         dispatch(addQuizId(payload));
     };
 };
@@ -19,11 +18,10 @@ export const quizzesSlice = createSlice(
         },
         reducers: {
             addQuiz: (state, action) => {
-                debugger;
-                const { name, topicId, id } = action.payload;
-                state.quizzes[id] = {
+                const { name, topicId, quizId } = action.payload;
+                state.quizzes[quizId] = {
                     name: name,
-                    id: id,
+                    id: quizId,
                     topicId: topicId,
                     cardIds: []
                     

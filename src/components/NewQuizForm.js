@@ -15,7 +15,6 @@ export default function NewQuizForm() {
   const [topicId, setTopicId] = useState("");
   const history = useHistory();
   const topics = useSelector(selectTopics)
-  const id = uuidv4();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +27,10 @@ export default function NewQuizForm() {
     // create the new cards here and add each card's id to cardIds
     // create the new quiz here
   
-    dispatch(thunkActionCreator({name, topicId, id}))
+    dispatch(thunkActionCreator({
+      name: name, 
+      topicId: topicId, 
+      quizId: uuidv4()}))
     history.push(ROUTES.quizzesRoute());
   };
 
